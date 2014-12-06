@@ -739,25 +739,50 @@ def main():
 	cheminTirage = ""
 	
 	# Pas assez d'arguments
-	if(len(sys.argv) <= 2):
-		sys.exit("Usage : " + sys.argv[0] + " [options] grille lettres")
+	#if(len(sys.argv) <= 2):
+	#	sys.exit("Usage : " + sys.argv[0] + " [options] grille lettres")
 		
 	# Activation des options demandées
 	i = 1
 	while(i < len(sys.argv) and sys.argv[i][0] == '-'):
-		if(sys.argv[i] == '-points'):
+		if(sys.argv[i] == '-h' or sys.argv[i] == '--help'):
+			print "Usage : " + sys.argv[0] + " [options] grille lettres"
+
+			print ""
+			print "grille"
+			print "\tFichier texte contenant la grille, une case par ligne"
+			print "lettres"
+			print "\tFichier texte contenant le tirage de lettres, une lettre par ligne"
+
+			print ""
+			print "Options:"
+			
+			print "--points"
+			print "\tIndique le total de points rapporté par le mot posé, ainsi que les bonus"
+			print "--print"
+			print "\tAffiche la grille après placage du mot"
+			print "--update"
+			print "\tMet à jour les fichiers 'grille' et 'lettres' passés en paramètre pour refléter les changements"
+			print "--time"
+			print "\tIndique le temps de chargement du dictionnaire et le temps de recherche du mot"
+			print "--limit t"
+			print "\tLimite le temps de recherche des mots à t secondes; t peut être un nombre décimal"
+			print "\tNote: la limite n'a aucune influence sur le temps de chargement du dictionnaire"
+			sys.exit()
+
+		elif(sys.argv[i] == '--points'):
 			options['points'] = True
 			
-		elif(sys.argv[i] == '-print'):
+		elif(sys.argv[i] == '--print'):
 			options['print'] = True
 			
-		elif(sys.argv[i] == '-update'):
+		elif(sys.argv[i] == '--update'):
 			options['update'] = True
 			
-		elif(sys.argv[i] == '-time'):
+		elif(sys.argv[i] == '--time'):
 			options['time'] = True
 		
-		elif(sys.argv[i] == '-limit'):
+		elif(sys.argv[i] == '--limit'):
 			try:
 				options['limit'] = float(sys.argv[i + 1].replace(',', '.'))
 			except:
@@ -775,7 +800,7 @@ def main():
 	if(len(sys.argv) > (i + 2)):
 		sys.exit("Trop d'arguments.")
 	
-	# Pas assez d'arguments (que des options)
+	# Pas assez d'arguments
 	if(len(sys.argv) < (i + 2)):
 		sys.exit("Usage : " + sys.argv[0] + " [options] grille lettres")
 		

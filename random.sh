@@ -24,5 +24,5 @@ lettre="${arrayV[$index]}"
 echo $lettre >> lettresRandom
 
 cat lettresRandom
-./scrabblesolv.py -print -points -update grille1 lettresRandom
+./scrabblesolv.py --print --points --update --time grille1 lettresRandom
 
