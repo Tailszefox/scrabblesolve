@@ -1,0 +1,4 @@
+scrabblesolve
+=============
+
+IA de Scrabble
